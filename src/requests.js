@@ -1,6 +1,8 @@
 const apiKey = process.env.TMDB_KEY
 
-console.log(apiKey)
+const request = {
+    
+}
 
-const test = "jfijefnwe"
-console.log(test)
+
+export default requests
