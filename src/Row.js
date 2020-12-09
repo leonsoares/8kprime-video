@@ -13,7 +13,6 @@ function Row({title, fetchUrl, isLargeRow}) {
         async function fetchData(){
             const request = await axios.get(fetchUrl)
             setMovies(request.data.results)
-            console.log(request)
             return request
         }
         fetchData();
@@ -25,13 +24,15 @@ function Row({title, fetchUrl, isLargeRow}) {
         playerVars: {
             autoplay: 1,
         },
-    }
+    };
 
     const handleClick = (movie) => {
+        console.log("this is movie")
+        console.log(movie)
         if(trailerUrl){
             setTrailerUrl('');
         } else {
-            movieTrailer(movie?.name || "")
+            movieTrailer(movie.title || movie.name, movie.release_date ? movie.release_date || movie.first_air_date : "")
             .then(url => {
                 const urlParams = new URLSearchParams(new URL(url).search)
                 setTrailerUrl(urlParams.get('v'));
@@ -42,16 +43,13 @@ function Row({title, fetchUrl, isLargeRow}) {
     return (
         <div className="row">
             <h2>{title}</h2>
-            {/* {title} */}
-            {/* {title} */}
-
             <div className="row__posters">
                 {movies.map(movie => (
                     <img
                     key={movie.id}
                     onClick={() => handleClick(movie)}
                     className={`row__poster ${isLargeRow && "row__posterLarge" }`}
-                    src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name}>
+                    src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name || movie.original_title || movie.title}>
                     </img>
                 ))}
             </div>

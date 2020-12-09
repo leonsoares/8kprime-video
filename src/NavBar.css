@@ -5,7 +5,7 @@
   position: fixed;
   padding: 20px;
   justify-content: space-between;
-  height: 30px;
+  height: 50px;
   z-index: 1;
 
   transition-timing-function: ease-in;
@@ -17,14 +17,14 @@
 
 .nav__logo {
   position: fixed;
-  left: 20px;
-  width: 100px;
+  left: 30px;
+  width: 150px;
   object-fit: contain;
 }
 
 .nav__avatar {
-  width: 30px;
+  width: 50px;
   object-fit: contain;
   position: fixed;
-  right: 20px;
+  right: 30px;
 }
